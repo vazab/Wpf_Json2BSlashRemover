@@ -1,0 +1,98 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="JSON 2BSlash Remover v2.0" Width="850" Height="600" Background="#FFEEEEEE" MinWidth="850" MinHeight="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Name="ReplaceButton" Grid.Row="0" Grid.Column="0" FontFamily="Roboto"
+                Width="100" Height="40"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,80,0,0">
+            Исправить</Button>
+
+        <Button Name="FindBtn" Grid.Row="0" Grid.Column="0" FontFamily="Roboto"
+                Width="100" Height="40"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,80,0,0">
+            Найти</Button>
+
+        <Button Name="ClearButtonForInputField" Grid.Row="0" Grid.Column="0" FontFamily="Roboto"
+                Width="30" Height="30" Margin="365,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            X</Button>
+
+        <CheckBox Name="CheckEmojiDoubleBackslashes" Content="Эмодзи"
+                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Grid.Column="0" Margin="30,20,0,0"/>
+
+        <CheckBox Name="CheckNewLineDoubleBackslashes" Content="Перенос строк"
+                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Grid.Column="0" Margin="30,42,0,0"/>
+
+        <RichTextBox Name="OutputText1" FontSize="16" FontFamily="Roboto"
+                     Block.LineHeight="2" IsReadOnly="true"
+                     VerticalScrollBarVisibility="Auto"
+                     Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="1"
+                     Margin="5,5,5,5" Padding="5,5,5,0"
+                     ScrollViewer.ScrollChanged="RichTextBox_ScrollChanged"
+                     PreviewMouseLeftButtonDown="RichTextBox_PreviewMouseDown">
+
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Result1"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+        <RichTextBox Name="OutputText2" FontSize="16" FontFamily="Roboto"
+                     Block.LineHeight="2" IsReadOnly="true"
+                     VerticalScrollBarVisibility="Auto"
+                     Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1"
+                     Margin="5,5,5,5" Padding="5,5,5,0"
+                     ScrollViewer.ScrollChanged="RichTextBox_ScrollChanged"
+                     PreviewMouseLeftButtonDown="RichTextBox_PreviewMouseDown">
+
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Result2"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+        <Rectangle Grid.Row="1" Grid.Column="0"
+                   Grid.RowSpan="2" Grid.ColumnSpan="2"
+                   Stroke="Black" Margin="5,5,5,5"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"/>
+
+        <Label Content="Было" FontFamily="Roboto" FontSize="16" FontWeight="Bold"
+               Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               Margin="0,0,0,-8" />
+
+        <Label Content="Стало" FontFamily="Roboto" FontSize="16" FontWeight="Bold"
+               Grid.Row="0" Grid.Column="1"
+               HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               Margin="0,0,0,-8" />
+        
+        <Label Name="SearchStatus" Content=""
+               Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               Margin="170,55,0,0" />
+
+        <TextBox Name="FindInput" Text="Найти текст?" Grid.Row="0" Grid.Column="0"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 Margin="170,20,0,0" TextWrapping="Wrap" Width="190" Height="40"/>
+
+    </Grid>
+</Window>
